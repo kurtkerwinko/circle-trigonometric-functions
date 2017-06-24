@@ -28,13 +28,6 @@ function draw() {
   text("FPS: " + fps.toFixed(2), 10, height - 10);
 }
 
-function mouseMoved() {
-  staticCircle.target.x = mouseX;
-  staticCircle.target.y = mouseY;
-  movingCircle.position.x = mouseX;
-  movingCircle.position.y = mouseY;
-}
-
 function updateStaticCircle() {
   staticCircle.update();
 }
@@ -75,4 +68,17 @@ function drawInfoText(circle, prL, prX, prY) {
   text("Closest X: " + circle.intersectPos.x.toFixed(2), prX, prY + gap * 4);
   text("Closest Y: " + circle.intersectPos.y.toFixed(2), prX, prY + gap * 5);
   pop();
+}
+
+function mouseMoved() {
+  staticCircle.target.x = mouseX;
+  staticCircle.target.y = mouseY;
+  movingCircle.position.x = mouseX;
+  movingCircle.position.y = mouseY;
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  staticCircle.position.x = width / 2;
+  staticCircle.position.y = height / 2;
 }
